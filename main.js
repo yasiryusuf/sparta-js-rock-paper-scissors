@@ -1,42 +1,27 @@
-//
-// var userChoice = prompt("Choose an Option (Rock, Paper Scissors)");
-// var computerChoice = Math.random();
-//
-// if(computerChoice <= 0.33) {
-//   computerChoice = "Rock";
-// } else if (computerChoice<=0.67) {
-//   computerChoice = "Paper";
-// } else {
-//   computerChoice = "Scissors";
-// }
 
+var playerScore = 0;
+var computerScore = 0;
 
-function compare(choice1,choice2) {
-  if(choice1 === choice2) {
-    return ('The Result is a Tie!')
-  }
-   //Scenario of Rock
-  if(choice1 === "Rock") {
-    if (choice2 === "Scissors") {
-      return ('Rock Wins!');
-    } else {
-      return ('Paper Wins!');
+//start of game
+function Game(numOfRounds) {
+
+  do {
+    var player  = userChoice();
+    var computer = computerChoice();
+    var result = compare (player, computer);
+    updateScores(result, 1);
+    if(result !== 0) {
+      numOfRounds--;
     }
-  } //Scenario of Paper
-  if(choice1 === "Paper") {
-    if (choice2 === "Scissors") {
-      return ('Scissors Wins!');
-    } else {
-      return ('Paper Wins!');
-    }
-  } //Scenario of Scissors
-  if(choice1 === "Scissors") {
-    if (choice2 === "Paper") {
-      return ('Scissors Wins!');
-  } else {
-    return ('Rock Wins!');
-  }
-}
+  }while(numOfRounds > 0);
 
+  if(playerScore > computerScore) {
+    alert("You have " + playerScore + " points compared to the computer's " + computerScore + " points. So You win!");
+  }
+  else {
+    alert("The computer has " + computerScore + " points compared to your" + playerScore + " points. So Unlucky, the computer wins!");
+  }
+
+  clearScores();
 
 }
